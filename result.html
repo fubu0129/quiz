@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>結果</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>結果発表</h1>
+        <p id="result-text"></p>
+        <div class="button-group">
+            <button onclick="location.href='index.html'">メインページへ戻る</button>
+        </div>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const correctAnswers = parseInt(urlParams.get("score"), 10);
+        const resultText = document.getElementById("result-text");
+
+        let rank = "挑戦者";
+        if (correctAnswers === 5) rank = "クイズマスター";
+        else if (correctAnswers >= 3) rank = "知識王";
+
+        resultText.textContent = `正解数: ${correctAnswers}/5 - 称号: ${rank}`;
+    </script>
+</body>
+</html>
